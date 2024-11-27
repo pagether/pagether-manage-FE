@@ -8,6 +8,7 @@ const Container = styled.div`
   min-width: 800px;
   flex-wrap: wrap;
   gap: 20px;
+  margin-bottom: 20px;
 `;
 
 const SecondLine = () => {

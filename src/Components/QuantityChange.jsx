@@ -15,6 +15,7 @@ const Number = styled.div`
 const ArrowIcon = styled.img`
   width: 18px;
   height: 18px;
+  margin-bottom: 2.5px;
 `;
 
 const QuantityChange = ({ value }) => {

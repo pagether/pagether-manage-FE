@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
+// import "./index.css";
+// import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Header from "./Components/Header.jsx";
 import Quantity from "./Components/Quantity";
@@ -14,7 +14,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AdminHome />
-    {/* <ApiTimes /> */}
   </React.StrictMode>
 );
 

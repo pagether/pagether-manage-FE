@@ -4,6 +4,8 @@ import QunatityManage from "./QuantityManage";
 import ComplainManage from "./ComplainManage";
 import ApiManage from "./ApiManage";
 import SecondLine from "./SecondLine";
+import NoticeManage from "./NoticeManage";
+import ThirdLine from "./ThirdLine";
 
 const Wrapper = styled.div``;
 const ContentWrapper = styled.div`
@@ -20,6 +22,7 @@ const AdminHome = () => {
       <ContentWrapper>
         <QunatityManage />
         <SecondLine />
+        <ThirdLine />
       </ContentWrapper>
     </Wrapper>
   );
