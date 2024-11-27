@@ -3,23 +3,25 @@ import styled from "styled-components";
 import Complain from "./Complain";
 
 const Wrapper = styled.div`
-  width: 701px;
-  height: 289px;
+  flex: 3;
+  height: 290px;
   border-radius: 18px;
-  border: 1px solid #eeeeee;
   padding: 20px;
+  border: 1px solid #eeeeee;
   background: #f5f5f5;
   position: relative;
-  margin-left: 10px;
-  margin-top: 23px;
   box-sizing: border-box;
+  display: flex;
 `;
 const Wrapper2 = styled.div`
+  width: 100%;
+  margin-top: 50px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 `;
 const Header = styled.div`
-  margin-bottom: 50px;
+  /* margin-bottom: 100px; */
 `;
 const Title = styled.div`
   font-size: 15px;
@@ -51,16 +53,16 @@ const ComplainManage = () => {
         <FullImg src="/images/rightarrow.svg" />
       </Header>
 
-      {data.map((item, index) => (
-        <Wrapper2 key={index}>
+      <Wrapper2>
+        {data.map((item, index) => (
           <Complain
             reason={item.reason}
             count={item.count}
             time={item.time}
             blocktime={item.blocktime}
           />
-        </Wrapper2>
-      ))}
+        ))}
+      </Wrapper2>
     </Wrapper>
   );
 };

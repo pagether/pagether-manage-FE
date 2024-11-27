@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  width: 650px;
   height: 25px;
   border-radius: 18px;
   border: 1px solid #eeeeee;
@@ -11,6 +10,7 @@ const Wrapper = styled.div`
   background: #eeeeee;
   margin-bottom: 6px;
   align-items: center;
+  white-space: nowrap;
 `;
 const Wrapper2 = styled.div`
   display: flex;

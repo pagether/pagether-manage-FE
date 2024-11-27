@@ -4,11 +4,11 @@ import QuantityChange from "./QuantityChange";
 
 const QuantitiyConatier = styled.div`
   background: #f5f5f5;
-  width: 220px;
+  /* width: 220px; */
+  flex: 1;
   border-radius: 18px;
   border: 1px solid #eeeeee;
   padding: 14px;
-  margin: 10px;
   /* flex-shrink: 0; // 이게 컴포넌트 크기를 일정유지시켜줌 */
 `;
 const Title = styled.div`

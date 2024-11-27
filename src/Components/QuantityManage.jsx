@@ -4,8 +4,10 @@ import Quantity from "./Quantity";
 
 const Wrapper = styled.div`
   display: flex;
+  gap: 20px;
   justify-content: space-between;
   min-width: 800px;
+  margin-bottom: 20px;
 `;
 const QunatityManage = () => {
   const titles = [
