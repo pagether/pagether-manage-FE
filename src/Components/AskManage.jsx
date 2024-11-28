@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import styled from "styled-components";
 import Ask from "./Ask";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   flex: 2;
@@ -47,7 +48,9 @@ const AskManage = () => {
     <Wrapper>
       <Header>
         <Title>문의</Title>
-        <FullImg src="/images/rightarrow.svg" />
+        <Link to={"/askpage"}>
+          <FullImg src="/images/rightarrow.svg" />
+        </Link>
       </Header>
       <AskWrapper>
         {data.map((item, index) => (

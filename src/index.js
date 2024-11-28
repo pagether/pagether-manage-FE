@@ -9,11 +9,14 @@ import QunatityManage from "./Components/QuantityManage";
 import AdminHome from "./Components/AdminHome";
 import ComplainManage from "./Components/ComplainManage";
 import ApiTimes from "./Components/ApiTimes";
+import NoticePage from "./Components/NoticePage";
+import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AdminHome />
+    {/* <AdminHome /> */}
+    <App />
   </React.StrictMode>
 );
 

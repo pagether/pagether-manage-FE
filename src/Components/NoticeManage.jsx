@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import styled from "styled-components";
 import Notice from "./Notice";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   flex: 3;
@@ -81,7 +82,9 @@ const NoticeManage = () => {
     <Wrapper>
       <Header>
         <Title>소식 작성</Title>
-        <FullImg src="/images/rightarrow.svg" />
+        <Link to={"/noticepage"}>
+          <FullImg src="/images/rightarrow.svg" />
+        </Link>
       </Header>
       <NoticeWrapper>
         <WriteBox>
@@ -90,7 +93,8 @@ const NoticeManage = () => {
         </WriteBox>
         {notices.map((notice, index) => (
           <Notice key={index} notice={notice} />
-        ))}
+        ))}{" "}
+        {/* 추후에 여기 두개만 보이게 설정*/}
       </NoticeWrapper>
     </Wrapper>
   );

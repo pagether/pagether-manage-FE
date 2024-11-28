@@ -2,28 +2,25 @@ import { React, useState } from "react";
 import styled from "styled-components";
 import Complain from "./Complain";
 import { Link } from "react-router-dom";
+import Header from "./Header";
+import Bottom from "./Bottom";
 
 const Wrapper = styled.div`
-  flex: 3;
-  height: 290px;
   border-radius: 18px;
   padding: 20px;
-  border: 1px solid #eeeeee;
-  background: #f5f5f5;
   position: relative;
   box-sizing: border-box;
   display: flex;
 `;
-const Wrapper2 = styled.div`
+const ComplainWrapper = styled.div`
   width: 100%;
   margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  row-gap: 5px;
 `;
-const Header = styled.div`
-  /* margin-bottom: 100px; */
-`;
+const TitleHeader = styled.div``;
 const Title = styled.div`
   font-size: 15px;
   font-weight: 700;
@@ -46,26 +43,33 @@ const ComplainManage = () => {
     { reason: "스포일러", count: 4, time: "12:20", blocktime: 3 },
     { reason: "스포일러", count: 5, time: "00:20", blocktime: 6 },
     { reason: "스포일러", count: 6, time: "09:20", blocktime: 9 },
+    { reason: "스포일러", count: 3, time: "13:20", blocktime: 1 },
+    { reason: "스포일러", count: 4, time: "12:20", blocktime: 3 },
+    { reason: "스포일러", count: 5, time: "00:20", blocktime: 6 },
+    { reason: "스포일러", count: 6, time: "09:20", blocktime: 9 },
+    { reason: "스포일러", count: 5, time: "00:20", blocktime: 6 },
+    { reason: "스포일러", count: 6, time: "09:20", blocktime: 9 },
   ];
   return (
-    <Wrapper>
-      <Header>
-        <Title>신고된 피드</Title>
-        <Link to={"/complainpage"}>
-          <FullImg src="/images/rightarrow.svg" />
-        </Link>
-      </Header>
-      <Wrapper2>
-        {data.map((item, index) => (
-          <Complain
-            reason={item.reason}
-            count={item.count}
-            time={item.time}
-            blocktime={item.blocktime}
-          />
-        ))}
-      </Wrapper2>
-    </Wrapper>
+    <div>
+      <Header />
+      <Wrapper>
+        <TitleHeader>
+          <Title>신고된 피드</Title>
+        </TitleHeader>
+        <ComplainWrapper>
+          {data.map((item, index) => (
+            <Complain
+              reason={item.reason}
+              count={item.count}
+              time={item.time}
+              blocktime={item.blocktime}
+            />
+          ))}
+        </ComplainWrapper>
+      </Wrapper>
+      <Bottom />
+    </div>
   );
 };
 
