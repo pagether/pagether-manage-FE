@@ -4,6 +4,8 @@ import AdminHome from "./Components/AdminHome";
 import NoticePage from "./Components/NoticePage";
 import AskPage from "./Components/AskPage";
 import ComplainPage from "./Components/ComplainPage";
+import ComplainPost from "./Components/ComplainPost";
+import AskPost from "./Components/AskPost";
 
 const MainLayout = styled.div``;
 
@@ -13,9 +15,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AdminHome />} />
-          <Route path="/noticepage" element={<NoticePage />} />
-          <Route path="/askpage" element={<AskPage />} />
-          <Route path="/complainpage" element={<ComplainPage />} />
+          <Route path="/notice/page" element={<NoticePage />} />
+          <Route path="/ask/page" element={<AskPage />} />
+          <Route path="/complain/page" element={<ComplainPage />} />
+          <Route path="/ask/post" element={<AskPost />} />
+          <Route path="/complain/post" element={<ComplainPost />} />
         </Routes>
       </BrowserRouter>
     </MainLayout>

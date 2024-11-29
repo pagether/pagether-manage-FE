@@ -37,7 +37,7 @@ const FullImg = styled.img`
   position: absolute;
 `;
 
-const ComplainManage = () => {
+const ComplainPage = () => {
   const data = [
     { reason: "스포일러", count: 3, time: "13:20", blocktime: 1 },
     { reason: "스포일러", count: 4, time: "12:20", blocktime: 3 },
@@ -73,4 +73,4 @@ const ComplainManage = () => {
   );
 };
 
-export default ComplainManage;
+export default ComplainPage;

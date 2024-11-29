@@ -48,13 +48,13 @@ const AskManage = () => {
     <Wrapper>
       <Header>
         <Title>문의</Title>
-        <Link to={"/askpage"}>
+        <Link to={"/ask/page"}>
           <FullImg src="/images/rightarrow.svg" />
         </Link>
       </Header>
       <AskWrapper>
         {data.map((item, index) => (
-          <Ask ask={item.ask} time={item.time} />
+          <Ask ask={item.ask} time={item.time} showDeleteButton={false} />
         ))}
       </AskWrapper>
     </Wrapper>

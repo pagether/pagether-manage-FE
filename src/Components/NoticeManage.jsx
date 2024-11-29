@@ -82,7 +82,7 @@ const NoticeManage = () => {
     <Wrapper>
       <Header>
         <Title>소식 작성</Title>
-        <Link to={"/noticepage"}>
+        <Link to={"/notice/page"}>
           <FullImg src="/images/rightarrow.svg" />
         </Link>
       </Header>
@@ -92,9 +92,8 @@ const NoticeManage = () => {
           <WriteButton>작성하기</WriteButton>
         </WriteBox>
         {notices.map((notice, index) => (
-          <Notice key={index} notice={notice} />
-        ))}{" "}
-        {/* 추후에 여기 두개만 보이게 설정*/}
+          <Notice key={index} notice={notice} showDeleteButton={false} />
+        ))}
       </NoticeWrapper>
     </Wrapper>
   );

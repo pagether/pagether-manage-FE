@@ -2,8 +2,8 @@ import { React, useState } from "react";
 import styled from "styled-components";
 import Ask from "./Ask";
 import { Link } from "react-router-dom";
-import Header from "./Header";
 import Bottom from "./Bottom";
+import Header from "./Header";
 
 const Wrapper = styled.div`
   border-radius: 18px;

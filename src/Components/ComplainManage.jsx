@@ -51,7 +51,7 @@ const ComplainManage = () => {
     <Wrapper>
       <Header>
         <Title>신고된 피드</Title>
-        <Link to={"/complainpage"}>
+        <Link to={"/complain/page"}>
           <FullImg src="/images/rightarrow.svg" />
         </Link>
       </Header>
@@ -62,6 +62,7 @@ const ComplainManage = () => {
             count={item.count}
             time={item.time}
             blocktime={item.blocktime}
+            showDeleteButton={false}
           />
         ))}
       </Wrapper2>
