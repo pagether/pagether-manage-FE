@@ -6,9 +6,8 @@ import AskPage from "./Components/AskPage";
 import ComplainPage from "./Components/ComplainPage";
 import ComplainPost from "./Components/ComplainPost";
 import AskPost from "./Components/AskPost";
-
 const MainLayout = styled.div``;
-
+/* eslint-disable */
 function App() {
   return (
     <MainLayout>
