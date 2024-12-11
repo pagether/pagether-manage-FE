@@ -18,12 +18,13 @@ const Wrapper3 = styled.div`
 const AdminHome = () => {
   return (
     <Wrapper>
-      <Header />
+      https://www.figma.com/deck/u7IEsT8XJltI73mNvZvFUr/Untitled?node-id=5-67&t=1wHRWbC3dUDZ1BZs-1
+      {/* <Header />
       <ContentWrapper>
         <QunatityManage />
         <SecondLine />
         <ThirdLine />
-      </ContentWrapper>
+      </ContentWrapper> */}
     </Wrapper>
   );
 };
