@@ -11,13 +11,16 @@ import ComplainManage from "./Components/ComplainManage";
 import ApiTimes from "./Components/ApiTimes";
 import NoticePage from "./Components/NoticePage";
 import App from "./App";
+import styled from "styled-components";
+
+const Container = styled.div``;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <Container>
     {/* <AdminHome /> */}
     <App />
-  </React.StrictMode>
+  </Container>
 );
 
 reportWebVitals();
