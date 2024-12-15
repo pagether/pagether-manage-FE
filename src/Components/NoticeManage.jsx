@@ -4,8 +4,8 @@ import Notice from "./Notice";
 import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
-  flex: 3;
-  height: 220px;
+  flex: 1;
+  height: 161px;
   border-radius: 18px;
   padding: 20px;
   border: 1px solid #eeeeee;
@@ -44,15 +44,17 @@ const WriteBox = styled.div`
   margin-bottom: 12px;
 `;
 
-const InputBox = styled.input`
-  flex: 9;
+const InputBox = styled.textarea`
+  flex: 10;
   width: 100%;
   background: #ffffff;
   border-radius: 12px;
-  height: 35px;
+  height: 65px;
   border: none;
   outline: none;
   padding-left: 10px;
+  resize: none;
+  padding-top: 10px;
 
   &::placeholder {
     color: #eeeeee;
@@ -67,7 +69,7 @@ const WriteButton = styled.button`
   background: #dddddd;
   color: #ffffff;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 15px;
   border: none;
   border-radius: 12px;
   white-space: nowrap;
@@ -82,18 +84,18 @@ const NoticeManage = () => {
     <Wrapper>
       <Header>
         <Title>소식 작성</Title>
-        <Link to={"/notice/page"}>
+        {/* <Link to={"/notice/page"}>
           <FullImg src="/images/rightarrow.svg" />
-        </Link>
+        </Link> */}
       </Header>
       <NoticeWrapper>
         <WriteBox>
           <InputBox placeholder="소식 글 작성" />
           <WriteButton>작성하기</WriteButton>
         </WriteBox>
-        {notices.map((notice, index) => (
+        {/* {notices.map((notice, index) => (
           <Notice key={index} notice={notice} showDeleteButton={false} />
-        ))}
+        ))} */}
       </NoticeWrapper>
     </Wrapper>
   );

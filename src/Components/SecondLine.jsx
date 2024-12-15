@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import styled from "styled-components";
 import ComplainManage from "./ComplainManage";
 import ApiManage from "./ApiManage";
+import AIManage from "./AImanage";
 import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -50,7 +51,8 @@ const SecondLine = () => {
 
   return (
     <Container>
-      <ComplainManage />
+      {/* <ComplainManage /> */}
+      <AIManage />
       <ApiManage title={"알라딘 API 요청 횟수"} value={aladinApiCount} />
       <ApiManage title={"구글 API 요청 횟수"} value={googleApiCount} />
     </Container>

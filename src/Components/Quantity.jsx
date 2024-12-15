@@ -32,7 +32,7 @@ const Quantity = ({ title, count, number }) => {
       <Title>{title}</Title>
       <NumWrapper>
         <Count>{count}</Count>
-        <QuantityChange value={number} />
+        {/* <QuantityChange value={number} /> */}
       </NumWrapper>
     </QuantitiyConatier>
   );
