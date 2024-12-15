@@ -14,7 +14,7 @@ const ThirdLine = () => {
   return (
     <Container>
       <NoticeManage />
-      <AskManage />
+      {/* <AskManage /> */}
     </Container>
   );
 };
