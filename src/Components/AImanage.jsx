@@ -1,8 +1,9 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
 const AI_API_URL = process.env.REACT_APP_AI_API_URL;
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Wrapper = styled.div`
   flex: 3;
@@ -54,11 +55,11 @@ const Detection = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${(props) =>
-    props.isSpoiler || props.isMalicious ? "#FFE3E3" : "#e5e5e5"};
+    props.isSpoiler ? "#FFE3E3" : props.isNormal ? "#CFEDC0" : "#e5e5e5"};
   font-size: 40px;
   font-weight: bold;
   color: ${(props) =>
-    props.isSpoiler || props.isMalicious ? "#FF8080" : "#939393"};
+    props.isSpoiler ? "#FF8080" : props.isNormal ? "#6A9454" : "#939393"};
 `;
 
 const TestContainer = styled.div`
@@ -143,38 +144,71 @@ const NewNoteContent = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   /* flex: 1; */
-  width: 300px;
+  // width: 300px;
 `;
 
 const AIManage = () => {
   const [isSpoiler, setIsSpoiler] = useState(false); // 스포일러 상태
-  const [isBad, setIsBad] = useState(false);
+  const [isNormal, setIsNormal] = useState(false);
   const [inputText, setInputText] = useState(""); // TextInput의 입력값 상태
+  const [newContent, setNewContent] = useState("");
+  const [spoilerNoteId, setSpoilerNoteId] = useState("");
 
-  const handleTest = async () => {
-    if (!inputText.trim()) {
-      alert("문장을 작성해주세요.");
-      return;
-    }
+  const handleTest = async (text) => {
     try {
-      const response = await axios.get(`${AI_API_URL}/predict/${inputText}`);
+      const response = await axios.get(`${AI_API_URL}/predict/${text}`);
       console.log(response.data);
 
       const { hasSpoiler, hasSpoilerPercent } = response.data;
 
       setIsSpoiler(hasSpoiler);
-      setIsBad(hasSpoilerPercent > 0.5); // 예시로 확률이 50% 이상이면 악성으로 설정
+      setIsNormal(!hasSpoiler);
 
       // 3초 후 상태 초기화
       setTimeout(() => {
         setIsSpoiler(false);
-        setIsBad(false);
+        setIsNormal(false);
       }, 3000);
+      if (hasSpoiler && text === newContent) {
+        console.log(spoilerNoteId);
+        patchData();
+      }
     } catch (error) {
       console.error("요청 실패:", error);
       alert("검사 중 오류가 발생했습니다. 다시 시도해주세요.");
     }
   };
+  const CheckTopNote = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/notes/top`);
+      console.log("가장최근데이터", response.data.data);
+      if (response.data.code == 200) {
+        setNewContent(response.data.data.content);
+        setSpoilerNoteId(response.data.data.noteId);
+      }
+    } catch (error) {
+      console.error("요청 실패:", error);
+      alert("검사 중 오류가 발생했습니다. 다시 시도해주세요.");
+    }
+  };
+  const patchData = async () => {
+    try {
+      const response = await axios.patch(
+        `${API_URL}/notes/spoiler/${spoilerNoteId}`
+      );
+      console.log("패치", response.data.data);
+      if (response.data.code == 200) {
+        console.log("잘 패치됨^^");
+      }
+    } catch (error) {
+      console.error("요청 실패:", error);
+      alert("검사 중 오류가 발생했습니다. 다시 시도해주세요.");
+    }
+  };
+
+  useEffect(() => {
+    CheckTopNote();
+  }, []);
 
   return (
     <Wrapper>
@@ -189,24 +223,20 @@ const AIManage = () => {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)} // 입력값 업데이트
             />
-            <TestButton onClick={handleTest}>검사</TestButton>
+            <TestButton onClick={() => handleTest(inputText)}>검사</TestButton>
           </TestInputContainer>
           <NewNoteContainer>
             <NewNotes>
               <NewNoteTitle>최근 노트</NewNoteTitle>
-              <NewNoteContent>
-                해리포터 볼트모트 결국 이김해리포터 볼트모트 결국 이김해리포터
-                볼트모트 결국 이김
-              </NewNoteContent>
+              <NewNoteContent>{newContent}</NewNoteContent>
             </NewNotes>
-            <TestButton onClick={handleTest}>검사</TestButton>
+            <TestButton onClick={() => handleTest(newContent)}>검사</TestButton>
           </NewNoteContainer>
         </TestContainer>
         <DetectionContainer>
-          <Detection isSpoiler={isSpoiler}>
-            {isSpoiler ? "스포" : "정상"}
+          <Detection isSpoiler={isSpoiler} isNormal={isNormal}>
+            {isSpoiler ? "스포" : isNormal ? "정상" : "준비"}
           </Detection>
-          <Detection isBad={isBad}>{isBad ? "악성" : "정상"}</Detection>
         </DetectionContainer>
       </Wrapper2>
     </Wrapper>
