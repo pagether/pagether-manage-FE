@@ -1,5 +1,8 @@
 import { React, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
+
+const AI_API_URL = process.env.REACT_APP_AI_API_URL;
 
 const Wrapper = styled.div`
   flex: 3;
@@ -108,6 +111,10 @@ const TestButton = styled.div`
   white-space: nowrap;
   padding-left: 5px;
   padding-right: 5px;
+  &:active {
+    background-color: #b4b4b4; /* 클릭 시 더 어두운 배경색 */
+    transform: scale(0.95); /* 살짝 축소 */
+  }
 `;
 
 const NewNoteContainer = styled.div`
@@ -140,8 +147,34 @@ const NewNoteContent = styled.div`
 `;
 
 const AIManage = () => {
-  const [isSpoiler, setIsSpoiler] = useState(true); // 스포일러 상태
+  const [isSpoiler, setIsSpoiler] = useState(false); // 스포일러 상태
   const [isBad, setIsBad] = useState(false);
+  const [inputText, setInputText] = useState(""); // TextInput의 입력값 상태
+
+  const handleTest = async () => {
+    if (!inputText.trim()) {
+      alert("문장을 작성해주세요.");
+      return;
+    }
+    try {
+      const response = await axios.get(`${AI_API_URL}/predict/${inputText}`);
+      console.log(response.data);
+
+      const { hasSpoiler, hasSpoilerPercent } = response.data;
+
+      setIsSpoiler(hasSpoiler);
+      setIsBad(hasSpoilerPercent > 0.5); // 예시로 확률이 50% 이상이면 악성으로 설정
+
+      // 3초 후 상태 초기화
+      setTimeout(() => {
+        setIsSpoiler(false);
+        setIsBad(false);
+      }, 3000);
+    } catch (error) {
+      console.error("요청 실패:", error);
+      alert("검사 중 오류가 발생했습니다. 다시 시도해주세요.");
+    }
+  };
 
   return (
     <Wrapper>
@@ -151,18 +184,22 @@ const AIManage = () => {
       <Wrapper2>
         <TestContainer>
           <TestInputContainer>
-            <TextInput placeholder="작성" />
-            <TestButton>검사</TestButton>
+            <TextInput
+              placeholder="작성"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)} // 입력값 업데이트
+            />
+            <TestButton onClick={handleTest}>검사</TestButton>
           </TestInputContainer>
           <NewNoteContainer>
             <NewNotes>
               <NewNoteTitle>최근 노트</NewNoteTitle>
               <NewNoteContent>
                 해리포터 볼트모트 결국 이김해리포터 볼트모트 결국 이김해리포터
-                볼트모트 결국 이김 
+                볼트모트 결국 이김
               </NewNoteContent>
             </NewNotes>
-            <TestButton>검사</TestButton>
+            <TestButton onClick={handleTest}>검사</TestButton>
           </NewNoteContainer>
         </TestContainer>
         <DetectionContainer>
