@@ -2,6 +2,9 @@ import { React, useState } from "react";
 import styled from "styled-components";
 import Notice from "./Notice";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Wrapper = styled.div`
   flex: 1;
@@ -76,10 +79,24 @@ const WriteButton = styled.button`
 `;
 
 const NoticeManage = () => {
-  const notices = [
-    "동물이 추가 되었습니다!  20m이상 동물들을 확인해보세요!",
-    "동물이 추가 되었습니다!  20m이상 동물들을 확인해보세요!",
-  ];
+  const [inputText, setInputText] = useState("");
+  const postNotice = async () => {
+    try {
+      const response = await axios.post(`${API_URL}/news`, {
+        content: inputText,
+      });
+      console.log(response.data.data);
+      if (response.data.code == 200) {
+        console.log("잘 올라감^^");
+        console.log(response.data.data);
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.error("요청 실패:", error);
+      alert("검사 중 오류가 발생했습니다. 다시 시도해주세요.");
+    }
+  };
+
   return (
     <Wrapper>
       <Header>
@@ -90,8 +107,14 @@ const NoticeManage = () => {
       </Header>
       <NoticeWrapper>
         <WriteBox>
-          <InputBox placeholder="소식 글 작성" />
-          <WriteButton>작성하기</WriteButton>
+          <InputBox
+            placeholder="소식 글 작성"
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+          />
+          <WriteButton onClick={() => postNotice(inputText)}>
+            작성하기
+          </WriteButton>
         </WriteBox>
         {/* {notices.map((notice, index) => (
           <Notice key={index} notice={notice} showDeleteButton={false} />
