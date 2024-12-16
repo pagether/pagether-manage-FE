@@ -6,6 +6,7 @@ import AskPage from "./Components/AskPage";
 import ComplainPage from "./Components/ComplainPage";
 import ComplainPost from "./Components/ComplainPost";
 import AskPost from "./Components/AskPost";
+import LoginPage from "./Components/LoginPage";
 const MainLayout = styled.div``;
 /* eslint-disable */
 function App() {
@@ -13,12 +14,13 @@ function App() {
     <MainLayout>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AdminHome />} />
-          <Route path="/notice/page" element={<NoticePage />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/home" element={<AdminHome />} />
+          {/* <Route path="/notice/page" element={<NoticePage />} />
           <Route path="/ask/page" element={<AskPage />} />
           <Route path="/complain/page" element={<ComplainPage />} />
           <Route path="/ask/post" element={<AskPost />} />
-          <Route path="/complain/post" element={<ComplainPost />} />
+          <Route path="/complain/post" element={<ComplainPost />} /> */}
         </Routes>
       </BrowserRouter>
     </MainLayout>

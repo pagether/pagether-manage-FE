@@ -12,6 +12,7 @@ import ApiTimes from "./Components/ApiTimes";
 import NoticePage from "./Components/NoticePage";
 import App from "./App";
 import styled from "styled-components";
+import LoginPage from "./Components/LoginPage";
 
 const Container = styled.div``;
 
@@ -19,6 +20,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Container>
     {/* <AdminHome /> */}
+    {/* <App /> */}
+    {/* <LoginPage/> */}
     <App />
   </Container>
 );
