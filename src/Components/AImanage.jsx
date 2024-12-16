@@ -133,6 +133,10 @@ const NewNoteTitle = styled.div`
 const NewNoteContent = styled.div`
   font-size: 14px;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* flex: 1; */
+  width: 300px;
 `;
 
 const AIManage = () => {
@@ -153,7 +157,10 @@ const AIManage = () => {
           <NewNoteContainer>
             <NewNotes>
               <NewNoteTitle>최근 노트</NewNoteTitle>
-              <NewNoteContent>해리포터 볼트모트 결국 이김</NewNoteContent>
+              <NewNoteContent>
+                해리포터 볼트모트 결국 이김해리포터 볼트모트 결국 이김해리포터
+                볼트모트 결국 이김 
+              </NewNoteContent>
             </NewNotes>
             <TestButton>검사</TestButton>
           </NewNoteContainer>

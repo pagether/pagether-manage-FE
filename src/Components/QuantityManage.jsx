@@ -28,8 +28,7 @@ const QunatityManage = () => {
       // });
 
       try {
-        const token =
-          "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3aW5uZXJqaXdvb0BnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzM2NTc1NDIwfQ.TbsHmRPq4KYgFIicBCSBOgeUOLQUSqHvwfkZ4nuXhIo";
+        const token = localStorage.getItem("token");
         if (!token) {
           //  return navigation.replace("LoginScreen");
           console.log("no token");
