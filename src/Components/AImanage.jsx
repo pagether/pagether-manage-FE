@@ -265,10 +265,10 @@ const AIManage = () => {
     // 초기 데이터 가져오기
     CheckTopNotes();
     // 5분마다 데이터 갱신
-    const intervalId = setInterval(CheckTopNotes, 300000); // 60000ms = 1분
+    // const intervalId = setInterval(CheckTopNotes, 300000); // 60000ms = 1분
 
-    // 컴포넌트 언마운트 시 interval 정리
-    return () => clearInterval(intervalId);
+    // // 컴포넌트 언마운트 시 interval 정리
+    // return () => clearInterval(intervalId);
   }, []);
 
   return (
